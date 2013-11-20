@@ -25,7 +25,7 @@ Almost all files meet these requirements. The only case it doesn't account for i
 
 == Installation ==
 
-1. Search for "Disable Browser Cache" under `WordPress Admin > Plugins > Add New`
+1. Search for "Busted" under `WordPress Admin > Plugins > Add New`
 1. Install the plugin.
 1. Activate the plugin.
 
