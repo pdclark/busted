@@ -31,12 +31,14 @@ class Storm_Disable_Browser_Cache {
 	static protected $version_slug = 'no-cache';
 
 	static public function init(){
+
 		self::$version_string = time();
 
 		add_action( 'wp_print_scripts', __CLASS__ . '::wp_print_scripts', PHP_INT_MAX - 1 );
 
 		add_filter( 'stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
 		add_filter( 'locale_stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
+		
 	}
 
 	/**
@@ -45,6 +47,7 @@ class Storm_Disable_Browser_Cache {
 	 * @return void
 	 */
 	static public function wp_print_scripts() {
+
 		global $wp_scripts;
 
 		if ( !self::$filtered_wp_scripts ) {
@@ -75,10 +78,12 @@ class Storm_Disable_Browser_Cache {
 		}
 
 		return $uri;
+
 	}
 
 }
 
-if ( !is_admin() ) {
-	add_action( 'plugins_loaded', 'Storm_Disable_Browser_Cache::init' );
-}
+/**
+ * Only load plugin on site front-end
+ */
+add_action( 'template_redirect', 'Storm_Disable_Browser_Cache::init' );
