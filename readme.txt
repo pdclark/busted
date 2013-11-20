@@ -2,7 +2,7 @@
 Contributors: brainstormmedia, pdclark
 Plugin URI: https://github.com/brainstormmedia/disable-browser-cache
 Author URI: http://brainstormmedia.com
-Tags: browser, cache, develop, debug, client
+Tags: browser, cache, develop, debug, client, clear, empty, bust, break, refresh
 Requires at least: 3.4
 Tested up to: 3.7.1
 Stable tag: 1.1
