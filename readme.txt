@@ -1,21 +1,21 @@
-=== Disable Browser Cache ===
+=== Busted ===
 Contributors: brainstormmedia, pdclark
 Plugin URI: https://github.com/brainstormmedia/disable-browser-cache
 Author URI: http://brainstormmedia.com
 Tags: browser, cache, develop, debug, client
 Requires at least: 3.4
 Tested up to: 3.7.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Refresh browser cache for all stylesheets and scripts on every page load. Useful for sites under active development.
+Force browsers to load the most recent file if modified.
 
 == Description ==
 
-Refresh browser cache for all stylesheets and scripts on every page load.
+Force browsers to load the most recent file if modified. Saves you from asking "have you emptied your cache?".
 
-Useful for sites under active development. For example, sites being shared with others for review.
+Only updates browser caches if file has been modified.
 
 **Requirements**
 
@@ -31,10 +31,13 @@ Almost all files meet these requirements. The only case it doesn't account for i
 
 == Changelog ==
 
+= 1.1 =
+* Only refresh cache if file has been modified. Thanks [@unserkaiser](https://twitter.com/unserkaiser/status/402995947430375424).
+
 = 1.0 =
 * Initial public release.
 
 == Upgrade Notice ==
 
-= 1.0 =
-* Initial public release.
+= 1.1 =
+* Only refresh cache if file has been modified. Thanks [@unserkaiser](https://twitter.com/unserkaiser/status/402995947430375424).

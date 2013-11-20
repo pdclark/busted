@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Disable Browser Cache
-Plugin URI: http://github.com/brainstormmedia/disable-browser-cache
-Description: Refresh browser cache for all stylesheets and scripts on every page load. Useful for sites under active development. Requires <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style">wp_enqueue_style</a>, <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script">wp_enqueue_script</a>, or <a href="http://codex.wordpress.org/Function_Reference/get_stylesheet_uri">get_stylesheet_uri</a> be used to load scripts and styles.
+Plugin Name: Busted!
+Plugin URI: http://github.com/brainstormmedia/busted
+Description: Force browsers to load the most recent file if modified. Requires <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style">wp_enqueue_style</a>, <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script">wp_enqueue_script</a>, or <a href="http://codex.wordpress.org/Function_Reference/get_stylesheet_uri">get_stylesheet_uri</a> be used to load scripts and styles.
 Version: 1.0
 Author: Brainstorm Media
 Author URI: http://brainstormmedia.com
@@ -10,7 +10,7 @@ License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-class Storm_Disable_Browser_Cache {
+class Storm_Busted {
 
 	/**
 	 * wp_print_scripts runs in header in footer and when called.
@@ -23,7 +23,7 @@ class Storm_Disable_Browser_Cache {
 	/**
 	 * @var string Name for query arguements and version identifier.
 	 */
-	static protected $version_slug = 'no-cache';
+	static protected $version_slug = 'busted';
 
 	/**
 	 * @var string Version string with current time to break caches.
@@ -36,8 +36,6 @@ class Storm_Disable_Browser_Cache {
 	 * @return void
 	 */
 	static public function init(){
-
-		self::$version_string = time();
 
 		/**
 		 * PHP_INT_MAX - 1 used as hook priority because many developers
@@ -65,9 +63,15 @@ class Storm_Disable_Browser_Cache {
 			
 			foreach( (array) $wp_scripts->registered as $handle => $script ) {
 
-				$version = $script->ver . '-' . self::$version_slug . '-' . self::$version_string;
+				$modification_time = self::modification_time( $script->src );
 
-				$wp_scripts->registered[ $handle ]->ver = $version;
+				if ( $modification_time ) {
+
+					$version = $script->ver . '-' . self::$version_slug . '-' . $modification_time;
+
+					$wp_scripts->registered[ $handle ]->ver = $version;
+
+				}
 
 			}
 
@@ -87,11 +91,27 @@ class Storm_Disable_Browser_Cache {
 		
 		if ( in_array( pathinfo( $uri, PATHINFO_EXTENSION ), array( 'css', 'js' ) ) ) {
 
-			$uri = add_query_arg( self::$version_slug, self::$version_string, $uri );
+			$uri = add_query_arg( self::$version_slug, self::modification_time( $uri ), $uri );
 
 		}
 
 		return $uri;
+
+	}
+
+	/**
+	 * @param  string $src Script relative path or URI
+	 * @return int|bool File modification time or false.
+	 */
+	static public function modification_time( $src ) {
+
+		$file = realpath( ABSPATH . str_replace( get_site_url(), '', $src ) );
+
+		if ( file_exists( $file ) ) {
+			return filemtime( $file );
+		}
+
+		return false;
 
 	}
 
@@ -100,4 +120,4 @@ class Storm_Disable_Browser_Cache {
 /**
  * Only load plugin on site front-end
  */
-add_action( 'template_redirect', 'Storm_Disable_Browser_Cache::init' );
+add_action( 'template_redirect', 'Storm_Busted::init' );
