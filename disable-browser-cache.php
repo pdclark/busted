@@ -21,15 +21,20 @@ class Storm_Disable_Browser_Cache {
 	static protected $filtered_wp_scripts = false;
 
 	/**
+	 * @var string Name for query arguements and version identifier.
+	 */
+	static protected $version_slug = 'no-cache';
+
+	/**
 	 * @var string Version string with current time to break caches.
 	 */
 	static protected $version_string;
 
 	/**
-	 * @var string Name for query arguements and version identifier.
+	 * Setup hooks and vars.
+	 * 
+	 * @return void
 	 */
-	static protected $version_slug = 'no-cache';
-
 	static public function init(){
 
 		self::$version_string = time();
@@ -42,7 +47,7 @@ class Storm_Disable_Browser_Cache {
 	}
 
 	/**
-	 * Append self::$version_string to scripts and styles that use wp_enqueue_* functions.
+	 * Update version in scripts and styles that use wp_enqueue_* functions.
 	 * 
 	 * @return void
 	 */
@@ -68,6 +73,9 @@ class Storm_Disable_Browser_Cache {
 
 	/**
 	 * Filter styles and scripts that use stylesheet_uri()
+	 *
+	 * @param  string  $uri  URI
+	 * @return string  URI
 	 */
 	static public function stylesheet_uri( $uri ) {
 		
