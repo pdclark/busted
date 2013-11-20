@@ -39,6 +39,12 @@ class Storm_Disable_Browser_Cache {
 
 		self::$version_string = time();
 
+		/**
+		 * PHP_INT_MAX - 1 used as hook priority because many developers
+		 * use wp_print_scripts for enqueues.
+		 * 
+		 * Extremely high priority assures we catch everything.
+		 */
 		add_action( 'wp_print_scripts', __CLASS__ . '::wp_print_scripts', PHP_INT_MAX - 1 );
 
 		add_filter( 'stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
