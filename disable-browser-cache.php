@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Disable Browser Cache
-Plugin URI: http://github.com/brainstormmedia/no-cache
+Plugin URI: http://github.com/brainstormmedia/disable-browser-cache
 Description: Refresh browser cache for all stylesheets and scripts on every page load. Useful for sites under active development. Requires <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style">wp_enqueue_style</a>, <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script">wp_enqueue_script</a>, or <a href="http://codex.wordpress.org/Function_Reference/get_stylesheet_uri">get_stylesheet_uri</a> be used to load scripts and styles.
 Version: 1.0
 Author: Brainstorm Media
