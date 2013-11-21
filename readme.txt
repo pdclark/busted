@@ -13,15 +13,22 @@ Force browsers to load the most recent file if modified.
 
 == Description ==
 
-Force browsers to load the most recent file if modified. Saves you from asking "have you emptied your cache?".
+Saves you from asking "have you emptied your cache?".
 
-Only updates browser caches if file has been modified.
+**Features**
+
+* Safe to leave running on live sites.
+* Only refreshes browser cache for a file if it has been modified.
+* Resolves caching issues with Content Delivery Networks (CDNs) as well. No need to purge your CDN cache.
+* "Just works" — no configuration necessary.
 
 **Requirements**
 
-Requires [wp_enqueue_style](http://codex.wordpress.org/Function_Reference/wp_enqueue_style), [wp_enqueue_script](http://codex.wordpress.org/Function_Reference/wp_enqueue_script), or [get_stylesheet_uri](http://codex.wordpress.org/Function_Reference/get_stylesheet_uri) be used to load scripts and styles.
+Requires scripts use any of the below functions to load. Almost all files meet these requirements. The only case it doesn't account for is when URLs are hard-coded. This shouldn't ever be done, since it can break sites for other reasons.
 
-Almost all files meet these requirements. The only case it doesn't account for is when URLs are hard-coded. This shouldn't ever be done, since it can break sites for other reasons.
+* [wp_enqueue_style](http://codex.wordpress.org/Function_Reference/wp_enqueue_style)
+* [wp_enqueue_script](http://codex.wordpress.org/Function_Reference/wp_enqueue_script)
+* [get_stylesheet_uri](http://codex.wordpress.org/Function_Reference/get_stylesheet_uri)
 
 == Installation ==
 
