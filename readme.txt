@@ -30,6 +30,10 @@ Requires scripts use any of the below functions to load. Almost all files meet t
 * [wp_enqueue_script](http://codex.wordpress.org/Function_Reference/wp_enqueue_script)
 * [get_stylesheet_uri](http://codex.wordpress.org/Function_Reference/get_stylesheet_uri)
 
+**Comic**
+
+The comic on the wordpress.org banner is [Joy of Tech #1014](http://www.geekculture.com/joyoftech/joyarchives/1014.html).
+
 == Installation ==
 
 1. Search for "Busted" under `WordPress Admin > Plugins > Add New`
