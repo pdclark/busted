@@ -1,8 +1,8 @@
 === Busted! ===
 Contributors: brainstormmedia, pdclark
-Plugin URI: https://github.com/brainstormmedia/disable-browser-cache
+Plugin URI: https://github.com/brainstormmedia/busted
 Author URI: http://brainstormmedia.com
-Tags: browser, cache, develop, debug, client, clear, empty, bust, break, refresh
+Tags: browser cache, develop, debug, client, clear, empty, refresh
 Requires at least: 3.4
 Tested up to: 3.7.1
 Stable tag: 1.1
@@ -30,6 +30,8 @@ Requires scripts use any of the below functions to load. Almost all files meet t
 * [wp_enqueue_style](http://codex.wordpress.org/Function_Reference/wp_enqueue_style)
 * [wp_enqueue_script](http://codex.wordpress.org/Function_Reference/wp_enqueue_script)
 * [get_stylesheet_uri](http://codex.wordpress.org/Function_Reference/get_stylesheet_uri)
+
+Photo credit: [Brent Schneeman](http://www.flickr.com/photos/schneeman/3286137238/) – [cc](http://creativecommons.org/licenses/by-nc/2.0/)
 
 == Installation ==
 
