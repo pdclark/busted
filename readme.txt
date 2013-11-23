@@ -1,4 +1,4 @@
-=== Busted ===
+=== Busted! ===
 Contributors: brainstormmedia, pdclark
 Plugin URI: https://github.com/brainstormmedia/disable-browser-cache
 Author URI: http://brainstormmedia.com
@@ -29,10 +29,6 @@ Requires scripts use any of the below functions to load. Almost all files meet t
 * [wp_enqueue_style](http://codex.wordpress.org/Function_Reference/wp_enqueue_style)
 * [wp_enqueue_script](http://codex.wordpress.org/Function_Reference/wp_enqueue_script)
 * [get_stylesheet_uri](http://codex.wordpress.org/Function_Reference/get_stylesheet_uri)
-
-**Comic**
-
-The comic on the wordpress.org banner is [Joy of Tech #1014](http://www.geekculture.com/joyoftech/joyarchives/1014.html).
 
 == Installation ==
 
