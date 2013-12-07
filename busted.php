@@ -120,4 +120,4 @@ class Storm_Busted {
 /**
  * Only load plugin on site front-end
  */
-add_action( 'template_redirect', 'Storm_Busted::init' );
+add_action( 'init', 'Storm_Busted::init' );
