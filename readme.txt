@@ -1,7 +1,7 @@
 === Busted! ===
-Contributors: brainstormmedia, pdclark
-Plugin URI: https://github.com/brainstormmedia/busted
-Author URI: http://brainstormmedia.com
+Contributors: 10up, pdclark
+Plugin URI: https://github.com/10up/busted
+Author URI: http://pdclark.com
 Tags: browser cache, develop, debug, client, clear, empty, refresh
 Requires at least: 3.4
 Tested up to: 3.7.1
