@@ -5,7 +5,7 @@ Author URI: http://brainstormmedia.com
 Tags: browser cache, develop, debug, client, clear, empty, refresh
 Requires at least: 3.4
 Tested up to: 3.7.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,13 +41,16 @@ Photo credit: [Brent Schneeman](http://www.flickr.com/photos/schneeman/328613723
 
 == Changelog ==
 
+= 1.2 =
+* New: Change version slug to 'b-modified' to avoid user confusion.
+
 = 1.1 =
-* Only refresh cache if file has been modified. Thanks [@unserkaiser](https://twitter.com/unserkaiser/status/402995947430375424).
+* New: Only refresh cache if file has been modified. Thanks [@unserkaiser](https://twitter.com/unserkaiser/status/402995947430375424).
 
 = 1.0 =
 * Initial public release.
 
 == Upgrade Notice ==
 
-= 1.1 =
-* Only refresh cache if file has been modified. Thanks [@unserkaiser](https://twitter.com/unserkaiser/status/402995947430375424).
+= 1.2 =
+* New: Change version slug to 'b-modified' to avoid user confusion.
