@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Busted!
-Plugin URI: http://github.com/brainstormmedia/busted
+Plugin URI: http://github.com/10up/busted
 Description: Force browsers to load the most recent file if modified. Requires <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_style">wp_enqueue_style</a>, <a href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script">wp_enqueue_script</a>, or <a href="http://codex.wordpress.org/Function_Reference/get_stylesheet_uri">get_stylesheet_uri</a> be used to load scripts and styles.
-Version: 1.2
-Author: Brainstorm Media
-Author URI: http://brainstormmedia.com
+Version: 1.3
+Author: Paul Clark, 10up
+Author URI: http://pdclark.com
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -120,4 +120,4 @@ class Storm_Busted {
 /**
  * Only load plugin on site front-end
  */
-add_action( 'template_redirect', 'Storm_Busted::init' );
+add_action( 'init', 'Storm_Busted::init' );
