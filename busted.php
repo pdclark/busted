@@ -15,7 +15,7 @@ class Storm_Busted {
 	/**
 	 * wp_print_scripts runs in header in footer and when called.
 	 * Only run this modification once.
-	 * 
+	 *
 	 * @var boolean
 	 */
 	static protected $filtered_wp_scripts = false;
@@ -32,7 +32,7 @@ class Storm_Busted {
 
 	/**
 	 * Setup hooks and vars.
-	 * 
+	 *
 	 * @return void
 	 */
 	static public function init(){
@@ -40,27 +40,27 @@ class Storm_Busted {
 		/**
 		 * PHP_INT_MAX - 1 used as hook priority because many developers
 		 * use wp_print_scripts for enqueues.
-		 * 
+		 *
 		 * Extremely high priority assures we catch everything.
 		 */
 		add_action( 'wp_print_scripts', __CLASS__ . '::wp_print_scripts', PHP_INT_MAX - 1 );
 
 		add_filter( 'stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
 		add_filter( 'locale_stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
-		
+
 	}
 
 	/**
 	 * Update version in scripts and styles that use wp_enqueue_* functions.
-	 * 
+	 *
 	 * @return void
 	 */
 	static public function wp_print_scripts() {
 
 		global $wp_scripts;
 
-		if ( !self::$filtered_wp_scripts ) {
-			
+		if ( !self::$filtered_wp_scripts && is_object( $wp_scripts ) ) {
+
 			foreach( (array) $wp_scripts->registered as $handle => $script ) {
 
 				$modification_time = self::modification_time( $script->src );
@@ -88,7 +88,7 @@ class Storm_Busted {
 	 * @return string  URI
 	 */
 	static public function stylesheet_uri( $uri ) {
-		
+
 		if ( in_array( pathinfo( $uri, PATHINFO_EXTENSION ), array( 'css', 'js' ) ) ) {
 
 			$uri = add_query_arg( self::$version_slug, self::modification_time( $uri ), $uri );
