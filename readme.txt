@@ -1,6 +1,6 @@
 === Busted! ===
 Contributors: 10up, pdclark
-Plugin URI: https://github.com/10up/busted
+Plugin URI: https://github.com/pdclark/busted
 Author URI: http://pdclark.com
 Tags: browser cache, develop, debug, client, clear, empty, refresh
 Requires at least: 3.4
