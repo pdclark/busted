@@ -13,14 +13,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 class Storm_Busted {
 
 	/**
-	 * wp_print_scripts runs in header in footer and when called.
-	 * Only run this modification once.
-	 *
-	 * @var boolean
-	 */
-	static protected $filtered_wp_scripts = false;
-
-	/**
 	 * @var string Name for query arguements and version identifier.
 	 */
 	static protected $version_slug = 'b-modified';
@@ -57,25 +49,33 @@ class Storm_Busted {
 	 */
 	static public function wp_print_scripts() {
 
-		global $wp_scripts;
+		global $wp_scripts, $wp_styles;
 
-		if ( !self::$filtered_wp_scripts && is_object( $wp_scripts ) ) {
+		foreach( array( $wp_scripts, $wp_styles ) as $enqueue_list ) {
 
-			foreach( (array) $wp_scripts->registered as $handle => $script ) {
+			if ( ! isset( $enqueue_list->__busted_filtered ) && is_object( $enqueue_list ) ) {
 
-				$modification_time = self::modification_time( $script->src );
+				foreach( (array) @ $enqueue_list->registered as $handle => $script ) {
 
-				if ( $modification_time ) {
+					$modification_time = self::modification_time( $script->src );
 
-					$version = $script->ver . '-' . self::$version_slug . '-' . $modification_time;
+					if ( $modification_time ) {
 
-					$wp_scripts->registered[ $handle ]->ver = $version;
+						$version = $script->ver . '-' . self::$version_slug . '-' . $modification_time;
+
+						$enqueue_list->registered[ $handle ]->ver = $version;
+
+					}
 
 				}
 
-			}
+				/**
+				 * wp_print_scripts runs in header in footer and when called.
+				 * Only run this modification once.
+				 */
+				$enqueue_list->__busted_filtered = true;
 
-			self::$filtered_wp_scripts = true;
+			}
 
 		}
 
@@ -105,7 +105,11 @@ class Storm_Busted {
 	 */
 	static public function modification_time( $src ) {
 
-		$file = realpath( ABSPATH . str_replace( get_site_url(), '', $src ) );
+		if ( false !== strpos( $src, content_url() ) ) {
+			$src = WP_CONTENT_DIR . str_replace( content_url(), '', $src );
+		}
+
+		$file = realpath( $src );
 
 		if ( file_exists( $file ) ) {
 			return filemtime( $file );
@@ -117,7 +121,5 @@ class Storm_Busted {
 
 }
 
-/**
- * Only load plugin on site front-end
- */
 add_action( 'init', 'Storm_Busted::init' );
+add_action( 'admin_init', 'Storm_Busted::init' );
