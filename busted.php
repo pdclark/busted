@@ -55,7 +55,7 @@ class Storm_Busted {
 
 			if ( ! isset( $enqueue_list->__busted_filtered ) && is_object( $enqueue_list ) ) {
 
-				foreach( (array) $enqueue_list->registered as $handle => $script ) {
+				foreach( (array) @ $enqueue_list->registered as $handle => $script ) {
 
 					$modification_time = self::modification_time( $script->src );
 
