@@ -1,11 +1,11 @@
 === Busted! ===
-Contributors: 10up, pdclark
+Contributors: pdclark
 Plugin URI: https://github.com/pdclark/busted
 Author URI: http://pdclark.com
 Tags: browser cache, develop, debug, client, clear, empty, refresh
 Requires at least: 3.4
-Tested up to: 3.7.1
-Stable tag: 1.3
+Tested up to: 4.2
+Stable tag: 1.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,12 @@ Photo credit: [Brent Schneeman](http://www.flickr.com/photos/schneeman/328613723
 
 == Changelog ==
 
+= 1.4 =
+
+* Fix: Enable for stylesheets, not just JavaScript. Thanks [@francescolaffi](https://github.com/pdclark/busted/issues/5).
+* Fix: Enable in wp-admin. For real this time.
+* Fix: Hopefully suppress mysterious notice on login screen. Thanks @norcross.
+
 = 1.3 =
 * New: Change version slug to 'b-modified' to avoid user confusion.
 
@@ -55,5 +61,8 @@ Photo credit: [Brent Schneeman](http://www.flickr.com/photos/schneeman/328613723
 
 == Upgrade Notice ==
 
-= 1.3 =
-* New: Change version slug to 'b-modified' to avoid user confusion.
+= 1.4 =
+
+* Fix: Enable for stylesheets, not just JavaScript. Thanks [@francescolaffi](https://github.com/pdclark/busted/issues/5).
+* Fix: Enable in wp-admin. For real this time.
+* Fix: Hopefully suppress mysterious notice on login screen. Thanks @norcross.
