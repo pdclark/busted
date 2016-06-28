@@ -95,7 +95,7 @@ class Storm_Busted {
 
 		}
 
-		return $uri;
+		return esc_url( $uri );
 
 	}
 
