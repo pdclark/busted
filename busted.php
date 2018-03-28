@@ -31,11 +31,11 @@ class Storm_Busted {
 
 		/**
 		 * PHP_INT_MAX - 1 used as hook priority because many developers
-		 * use wp_print_scripts for enqueues.
+		 * use wp_enqueue_scripts for enqueues.
 		 *
 		 * Extremely high priority assures we catch everything.
 		 */
-		add_action( 'wp_print_scripts', __CLASS__ . '::wp_print_scripts', PHP_INT_MAX - 1 );
+		add_action( 'wp_enqueue_scripts', __CLASS__ . '::wp_enqueue_scripts', PHP_INT_MAX - 1 );
 
 		add_filter( 'stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
 		add_filter( 'locale_stylesheet_uri', __CLASS__ . '::stylesheet_uri' );
@@ -47,7 +47,7 @@ class Storm_Busted {
 	 *
 	 * @return void
 	 */
-	static public function wp_print_scripts() {
+	static public function wp_enqueue_scripts() {
 
 		global $wp_scripts, $wp_styles;
 
@@ -70,7 +70,7 @@ class Storm_Busted {
 				}
 
 				/**
-				 * wp_print_scripts runs in header in footer and when called.
+				 * wp_enqueue_scripts runs in header in footer and when called.
 				 * Only run this modification once.
 				 */
 				$enqueue_list->__busted_filtered = true;
